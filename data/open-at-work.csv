@@ -1,0 +1,7 @@
+CountryCode,question_code,question_label,target_group,subset,answer,percentage
+France,DEXindg1c,Openness about being LGBTI at work,All,All,Very open,23
+France,DEXindg1c,Openness about being LGBTI at work,All,All,Selectively open,50
+France,DEXindg1c,Openness about being LGBTI at work,All,All,Hide LGBT identity,27
+EU-28,DEXindg1c,Openness about being LGBTI at work,All,All,Very open,21
+EU-28,DEXindg1c,Openness about being LGBTI at work,All,All,Selectively open,53
+EU-28,DEXindg1c,Openness about being LGBTI at work,All,All,Hide LGBT identity,26

@@ -1,0 +1,7 @@
+CountryCode,question_code,question_label,target_group,subset,answer,percentage
+France,DEXopen_at_schoolFRA,Openness about being LGBTI at school,All,All,Very open,6
+France,DEXopen_at_schoolFRA,Openness about being LGBTI at school,All,All,Selectively open,41
+France,DEXopen_at_schoolFRA,Openness about being LGBTI at school,All,All,Hide LGBT identity,53
+EU-28,DEXopen_at_schoolFRA,Openness about being LGBTI at school,All,All,Very open,5
+EU-28,DEXopen_at_schoolFRA,Openness about being LGBTI at school,All,All,Selectively open,38
+EU-28,DEXopen_at_schoolFRA,Openness about being LGBTI at school,All,All,Hide LGBT identity,57

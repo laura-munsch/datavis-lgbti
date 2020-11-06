@@ -1,0 +1,9 @@
+CountryCode,question_code,question_label,target_group,subset,answer,percentage
+France,DEXschool_negcon,Experienced negative comments / conduct at school due to being LGBTI,All,All,Always,9
+France,DEXschool_negcon,Experienced negative comments / conduct at school due to being LGBTI,All,All,Often,29
+France,DEXschool_negcon,Experienced negative comments / conduct at school due to being LGBTI,All,All,Rarely,33
+France,DEXschool_negcon,Experienced negative comments / conduct at school due to being LGBTI,All,All,Never,29
+EU-28,DEXschool_negcon,Experienced negative comments / conduct at school due to being LGBTI,All,All,Always,10
+EU-28,DEXschool_negcon,Experienced negative comments / conduct at school due to being LGBTI,All,All,Often,28
+EU-28,DEXschool_negcon,Experienced negative comments / conduct at school due to being LGBTI,All,All,Rarely,31
+EU-28,DEXschool_negcon,Experienced negative comments / conduct at school due to being LGBTI,All,All,Never,31

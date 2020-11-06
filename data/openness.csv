@@ -1,0 +1,9 @@
+CountryCode,question_code,question_label,target_group,subset,answer,percentage
+France,DEXopenness,Openness about being LGBTI,All,All,Never open,24
+France,DEXopenness,Openness about being LGBTI,All,All,Rarely open,23
+France,DEXopenness,Openness about being LGBTI,All,All,Fairly open,29
+France,DEXopenness,Openness about being LGBTI,All,All,Very open,24
+EU-28,DEXopenness,Openness about being LGBTI,All,All,Never open,30
+EU-28,DEXopenness,Openness about being LGBTI,All,All,Rarely open,23
+EU-28,DEXopenness,Openness about being LGBTI,All,All,Fairly open,24
+EU-28,DEXopenness,Openness about being LGBTI,All,All,Very open,23
