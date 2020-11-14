@@ -1,11 +1,11 @@
 CountryCode,question_code,question_label,target_group,subset,answer,percentage
-France,DEXc10_1,Addressing LGBTI issues during school education,All,All,Yes, in a positive way,4
-France,DEXc10_1,Addressing LGBTI issues during school education,All,All,Yes, in a neutral and balanced way,9
-France,DEXc10_1,Addressing LGBTI issues during school education,All,All,Yes, both in a positive and negative way,3
-France,DEXc10_1,Addressing LGBTI issues during school education,All,All,Yes, in a negative way,2
+France,DEXc10_1,Addressing LGBTI issues during school education,All,All,Yes in a positive way,4
+France,DEXc10_1,Addressing LGBTI issues during school education,All,All,Yes in a neutral and balanced way,9
+France,DEXc10_1,Addressing LGBTI issues during school education,All,All,Yes both in a positive and negative way,3
+France,DEXc10_1,Addressing LGBTI issues during school education,All,All,Yes in a negative way,2
 France,DEXc10_1,Addressing LGBTI issues during school education,All,All,No,81
-EU-28,DEXc10_1,Addressing LGBTI issues during school education,All,All,Yes, in a positive way,6
-EU-28,DEXc10_1,Addressing LGBTI issues during school education,All,All,Yes, in a neutral and balanced way,11
-EU-28,DEXc10_1,Addressing LGBTI issues during school education,All,All,Yes, both in a positive and negative way,5
-EU-28,DEXc10_1,Addressing LGBTI issues during school education,All,All,Yes, in a negative way,7
+EU-28,DEXc10_1,Addressing LGBTI issues during school education,All,All,Yes in a positive way,6
+EU-28,DEXc10_1,Addressing LGBTI issues during school education,All,All,Yes in a neutral and balanced way,11
+EU-28,DEXc10_1,Addressing LGBTI issues during school education,All,All,Yes both in a positive and negative way,5
+EU-28,DEXc10_1,Addressing LGBTI issues during school education,All,All,Yes in a negative way,7
 EU-28,DEXc10_1,Addressing LGBTI issues during school education,All,All,No,71
