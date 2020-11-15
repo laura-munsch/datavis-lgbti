@@ -21,8 +21,8 @@ window.onload = function() {
 
     const color = {
         transparent: 'rgba(0, 0, 0, 0)',
-        fond: '#e1e1e1',
-        france: '#bbbbbb',
+        contour: '#e1e1e1',
+        france: '#ddddff',
         eu: 'black'
     }
 
@@ -30,6 +30,11 @@ window.onload = function() {
         .append('svg')
         .attr('width', canvas.width)
         .attr('height', canvas.height);
+
+    function answer(data, answer) {
+        let newData = data.filter(d => d.answer == answer);
+        return newData;
+    }
 
     function drawCircle(x, y, radius, color, stroke) {
         svg.append('ellipse')
@@ -46,10 +51,20 @@ window.onload = function() {
         let y = height;
         for (let i = 0 ; i < data.length / 2 ; i ++) {
             let eu = data[i + data.length / 2];
-            drawCircle(x, y, 100, color.transparent, color.fond);
+            drawCircle(x, y, 100, color.transparent, color.contour);
             drawCircle(x, y, data[i].percentage, color.france, null);
             drawCircle(x, y, eu.percentage, color.transparent, color.eu);
             x += 220;
+
+            svg.append('text')
+                .attr('x', 250)
+                .attr('y', height)
+                .text(data[i].question_label)
+
+            /* svg.append('text')
+                .attr('x', 250)
+                .attr('y', height + 25)
+                .text(data[i].answer) */
         }
     }
 
@@ -58,6 +73,7 @@ window.onload = function() {
 
         // traitement des données...
         console.log(data);
+        data = answer(data, 'Very open');
         drawData(data, 110);
     });
 
@@ -66,6 +82,7 @@ window.onload = function() {
 
         // traitement des données...
         console.log(data);
+        data = answer(data, 'Very open');
         drawData(data, 330);
     });
 
@@ -74,6 +91,10 @@ window.onload = function() {
 
         // traitement des données...
         console.log(data);
+        data = answer(data, 'No');
+        data.forEach(d => {
+            d.percentage = 100 - d.percentage;
+        });
         drawData(data, 550);
     });
 
@@ -82,6 +103,7 @@ window.onload = function() {
 
         // traitement des données...
         console.log(data);
+        data = answer(data, 'Yes');
         drawData(data, 770);
     });
 
@@ -90,6 +112,7 @@ window.onload = function() {
 
         // traitement des données...
         console.log(data);
+        data = answer(data, 'All');
         drawData(data, 990);
     });
 
@@ -98,6 +121,7 @@ window.onload = function() {
 
         // traitement des données...
         console.log(data);
+        data = answer(data, 'Very open');
         drawData(data, 1220);
     });
 
@@ -106,6 +130,7 @@ window.onload = function() {
 
         // traitement des données...
         console.log(data);
+        data = answer(data, 'All');
         drawData(data, 1440);
     });
 
@@ -114,6 +139,7 @@ window.onload = function() {
 
         // traitement des données...
         console.log(data);
+        data = answer(data, 'All');
         drawData(data, 1660);
     });
 
@@ -122,6 +148,7 @@ window.onload = function() {
 
         // traitement des données...
         console.log(data);
+        data = answer(data, 'All');
         drawData(data, 1880);
     });
 
@@ -130,6 +157,7 @@ window.onload = function() {
 
         // traitement des données...
         console.log(data);
+        data = answer(data, 'Yes');
         drawData(data, 2110);
     });
 
@@ -138,6 +166,10 @@ window.onload = function() {
 
         // traitement des données...
         console.log(data);
+        data = answer(data, 'Never');
+        data.forEach(d => {
+            d.percentage = 100 - d.percentage;
+        });
         drawData(data, 2330);
     });
 
@@ -146,6 +178,10 @@ window.onload = function() {
 
         // traitement des données...
         console.log(data);
+        data = answer(data, 'Never');
+        data.forEach(d => {
+            d.percentage = 100 - d.percentage;
+        });
         drawData(data, 2550);
     });
 }
