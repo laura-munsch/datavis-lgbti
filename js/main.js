@@ -16,7 +16,7 @@ window.onload = function() {
 
     const canvas = {
         width: window.innerWidth,
-        height: 3000,
+        height: window.innerHeight - 5,
     }
 
     const color = {
@@ -46,20 +46,20 @@ window.onload = function() {
             .attr('stroke', stroke)
     }
 
-    function drawData(data, height) {
-        let x = 110;
+    function drawData(data, width, height, size) {
+        let x = width;
         let y = height;
         for (let i = 0 ; i < data.length / 2 ; i ++) {
             let eu = data[i + data.length / 2];
-            drawCircle(x, y, 100, color.transparent, color.contour);
-            drawCircle(x, y, data[i].percentage, color.france, null);
-            drawCircle(x, y, eu.percentage, color.transparent, color.eu);
+            drawCircle(x, y, size, color.transparent, color.contour);
+            drawCircle(x, y, data[i].percentage * size / 100, color.france, null);
+            drawCircle(x, y, eu.percentage * size / 100, color.transparent, color.eu);
             x += 220;
 
-            svg.append('text')
-                .attr('x', 250)
+            /* svg.append('text')
+                .attr('x', x / 2)
                 .attr('y', height)
-                .text(data[i].question_label)
+                .text(data[i].question_label) */
 
             /* svg.append('text')
                 .attr('x', 250)
@@ -74,8 +74,10 @@ window.onload = function() {
         // traitement des données...
         console.log(data);
         data = answer(data, 'Very open');
-        drawData(data, 110);
+        drawData(data, canvas.width / 2, 180, 150);
     });
+
+    ////// SCHOOL
 
     d3.csv(srcOpenAtSchool).then((data, error) => {
         if (error) throw error;
@@ -83,7 +85,7 @@ window.onload = function() {
         // traitement des données...
         console.log(data);
         data = answer(data, 'Very open');
-        drawData(data, 330);
+        drawData(data, (canvas.width / 2) - 290, 340, 100);
     });
 
     d3.csv(srcSchoolAdressingIssues).then((data, error) => {
@@ -95,7 +97,7 @@ window.onload = function() {
         data.forEach(d => {
             d.percentage = 100 - d.percentage;
         });
-        drawData(data, 550);
+        drawData(data, (canvas.width / 2) - 450, 200, 75);
     });
 
     d3.csv(srcLeavingSchool).then((data, error) => {
@@ -104,61 +106,7 @@ window.onload = function() {
         // traitement des données...
         console.log(data);
         data = answer(data, 'Yes');
-        drawData(data, 770);
-    });
-
-    d3.csv(srcOpenToSchoolmates).then((data, error) => {
-        if (error) throw error;
-
-        // traitement des données...
-        console.log(data);
-        data = answer(data, 'All');
-        drawData(data, 990);
-    });
-
-    d3.csv(srcOpenAtWork).then((data, error) => {
-        if (error) throw error;
-
-        // traitement des données...
-        console.log(data);
-        data = answer(data, 'Very open');
-        drawData(data, 1220);
-    });
-
-    d3.csv(srcOpenToColleagues).then((data, error) => {
-        if (error) throw error;
-
-        // traitement des données...
-        console.log(data);
-        data = answer(data, 'All');
-        drawData(data, 1440);
-    });
-
-    d3.csv(srcOpenToSuperiors).then((data, error) => {
-        if (error) throw error;
-
-        // traitement des données...
-        console.log(data);
-        data = answer(data, 'All');
-        drawData(data, 1660);
-    });
-
-    d3.csv(srcOpenToClients).then((data, error) => {
-        if (error) throw error;
-
-        // traitement des données...
-        console.log(data);
-        data = answer(data, 'All');
-        drawData(data, 1880);
-    });
-
-    d3.csv(srcDiscriminationWork).then((data, error) => {
-        if (error) throw error;
-
-        // traitement des données...
-        console.log(data);
-        data = answer(data, 'Yes');
-        drawData(data, 2110);
+        drawData(data, (canvas.width / 2) - 490, 380, 75);
     });
 
     d3.csv(srcNegativeCommentsSchool).then((data, error) => {
@@ -170,7 +118,16 @@ window.onload = function() {
         data.forEach(d => {
             d.percentage = 100 - d.percentage;
         });
-        drawData(data, 2330);
+        drawData(data, (canvas.width / 2) - 370, 530, 75);
+    });
+
+    d3.csv(srcOpenToSchoolmates).then((data, error) => {
+        if (error) throw error;
+
+        // traitement des données...
+        console.log(data);
+        data = answer(data, 'All');
+        drawData(data, (canvas.width / 2) - 180, 520, 75);
     });
 
     d3.csv(srcSupportSchool).then((data, error) => {
@@ -182,6 +139,54 @@ window.onload = function() {
         data.forEach(d => {
             d.percentage = 100 - d.percentage;
         });
-        drawData(data, 2550);
+        drawData(data, (canvas.width / 2) - 420, 665, 50);
     });
+
+    ////////////// WORK
+
+    d3.csv(srcOpenAtWork).then((data, error) => {
+        if (error) throw error;
+
+        // traitement des données...
+        console.log(data);
+        data = answer(data, 'Very open');
+        drawData(data, (canvas.width / 2) + 290, 340, 100);
+    });
+
+    d3.csv(srcDiscriminationWork).then((data, error) => {
+        if (error) throw error;
+
+        // traitement des données...
+        console.log(data);
+        data = answer(data, 'Yes');
+        drawData(data, (canvas.width / 2) + 450, 200, 75);
+    });
+
+    d3.csv(srcOpenToColleagues).then((data, error) => {
+        if (error) throw error;
+
+        // traitement des données...
+        console.log(data);
+        data = answer(data, 'All');
+        drawData(data, (canvas.width / 2) + 490, 380, 75);
+    });
+
+    d3.csv(srcOpenToSuperiors).then((data, error) => {
+        if (error) throw error;
+
+        // traitement des données...
+        console.log(data);
+        data = answer(data, 'All');
+        drawData(data, (canvas.width / 2) + 370, 530, 75);
+    });
+
+    d3.csv(srcOpenToClients).then((data, error) => {
+        if (error) throw error;
+
+        // traitement des données...
+        console.log(data);
+        data = answer(data, 'All');
+        drawData(data, (canvas.width / 2) + 180, 520, 75);
+    });
+
 }
