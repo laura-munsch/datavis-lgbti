@@ -49,24 +49,22 @@ window.onload = function() {
     }
 
     function logData(data, width, height, size) {
+        let eu = data.filter(d => d.CountryCode == "EU-28")[0];
+        let fr = data.filter(d => d.CountryCode == "France")[0];
+
         allData.push({
-            data: data,
+            europe: eu,
+            france: fr,
             width: width,
             height: height,
             size: size
         });
     }
 
-    function drawData(data, width, height, size) {
-        let x = width;
-        let y = height;
-
-        let eu = data.filter(d => d.CountryCode == "EU-28")[0];
-        let fr = data.filter(d => d.CountryCode == "France")[0];
-
-        drawCircle(x, y, size, colors.transparent, colors.contour);
-        drawCircle(x, y, fr.percentage * size / 100, colors.france, null);
-        drawCircle(x, y, eu.percentage * size / 100, colors.transparent, colors.eu);
+    function drawData(data) {
+        drawCircle(data.width, data.height, data.size, colors.transparent, colors.contour);
+        drawCircle(data.width, data.height, data.france.percentage * data.size / 100, colors.france, null);
+        drawCircle(data.width, data.height, data.europe.percentage * data.size / 100, colors.transparent, colors.eu);
     }
 
     d3.csv(srcOpenness).then((data, error) => {
@@ -176,9 +174,10 @@ window.onload = function() {
         d3.csv(srcOpenToClients)
     ]).then(() => {
         console.log(allData);
+
         allData.forEach(d => {
-            drawData(d.data, d.width, d.height, d.size);
-        });
+            drawData(d);
+        })
     });
 
 }
