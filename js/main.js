@@ -25,7 +25,7 @@ window.onload = function() {
         transparent: 'rgba(0, 0, 0, 0)',
         contour: '#e1e1e1',
         france: '#ddddff',
-        eu: 'black'
+        europe: 'black'
     }
 
     const svg = d3.select('#container')
@@ -36,16 +36,6 @@ window.onload = function() {
     function answer(data, answer) {
         let newData = data.filter(d => d.answer == answer);
         return newData;
-    }
-
-    function drawCircle(x, y, radius, color, stroke) {
-        svg.append('ellipse')
-            .attr('cx', x)
-            .attr('cy', y)
-            .attr('rx', radius)
-            .attr('ry', radius)
-            .attr('fill', color)
-            .attr('stroke', stroke)
     }
 
     function logData(data, width, height, size) {
@@ -59,12 +49,6 @@ window.onload = function() {
             height: height,
             size: size
         });
-    }
-
-    function drawData(data) {
-        drawCircle(data.width, data.height, data.size, colors.transparent, colors.contour);
-        drawCircle(data.width, data.height, data.france.percentage * data.size / 100, colors.france, null);
-        drawCircle(data.width, data.height, data.europe.percentage * data.size / 100, colors.transparent, colors.eu);
     }
 
     d3.csv(srcOpenness).then((data, error) => {
@@ -175,9 +159,36 @@ window.onload = function() {
     ]).then(() => {
         console.log(allData);
 
-        allData.forEach(d => {
-            drawData(d);
-        })
-    });
+        let selection = svg.selectAll('ellipse').data(allData);
 
+        selection
+            .enter()
+            .append('ellipse')
+            .attr('cx', d => d.width)
+            .attr('cy', d => d.height)
+            .attr('rx', d => d.size)
+            .attr('ry', d => d.size)
+            .attr('fill', colors.transparent)
+            .attr('stroke', colors.contour);
+
+        selection
+            .enter()
+            .append('ellipse')
+            .attr('cx', d => d.width)
+            .attr('cy', d => d.height)
+            .attr('rx', d => d.france.percentage * d.size / 100)
+            .attr('ry', d => d.france.percentage * d.size / 100)
+            .attr('fill', colors.france)
+            .attr('stroke', colors.transparent);
+
+        selection
+            .enter()
+            .append('ellipse')
+            .attr('cx', d => d.width)
+            .attr('cy', d => d.height)
+            .attr('rx', d => d.europe.percentage * d.size / 100)
+            .attr('ry', d => d.europe.percentage * d.size / 100)
+            .attr('fill', colors.transparent)
+            .attr('stroke', colors.europe);
+    });
 }
