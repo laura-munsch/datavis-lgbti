@@ -21,7 +21,7 @@ window.onload = function() {
         height: window.innerHeight - 5,
     }
 
-    const color = {
+    const colors = {
         transparent: 'rgba(0, 0, 0, 0)',
         contour: '#e1e1e1',
         france: '#ddddff',
@@ -64,9 +64,9 @@ window.onload = function() {
         let eu = data.filter(d => d.CountryCode == "EU-28")[0];
         let fr = data.filter(d => d.CountryCode == "France")[0];
 
-        drawCircle(x, y, size, color.transparent, color.contour);
-        drawCircle(x, y, fr.percentage * size / 100, color.france, null);
-        drawCircle(x, y, eu.percentage * size / 100, color.transparent, color.eu);
+        drawCircle(x, y, size, colors.transparent, colors.contour);
+        drawCircle(x, y, fr.percentage * size / 100, colors.france, null);
+        drawCircle(x, y, eu.percentage * size / 100, colors.transparent, colors.eu);
     }
 
     d3.csv(srcOpenness).then((data, error) => {
