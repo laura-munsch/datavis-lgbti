@@ -49,23 +49,13 @@ window.onload = function() {
     function drawData(data, width, height, size) {
         let x = width;
         let y = height;
-        for (let i = 0 ; i < data.length / 2 ; i ++) {
-            let eu = data[i + data.length / 2];
-            drawCircle(x, y, size, color.transparent, color.contour);
-            drawCircle(x, y, data[i].percentage * size / 100, color.france, null);
-            drawCircle(x, y, eu.percentage * size / 100, color.transparent, color.eu);
-            x += 220;
 
-            /* svg.append('text')
-                .attr('x', x / 2)
-                .attr('y', height)
-                .text(data[i].question_label) */
+        let eu = data.filter(d => d.CountryCode == "EU-28")[0];
+        let fr = data.filter(d => d.CountryCode == "France")[0];
 
-            /* svg.append('text')
-                .attr('x', 250)
-                .attr('y', height + 25)
-                .text(data[i].answer) */
-        }
+        drawCircle(x, y, size, color.transparent, color.contour);
+        drawCircle(x, y, fr.percentage * size / 100, color.france, null);
+        drawCircle(x, y, eu.percentage * size / 100, color.transparent, color.eu);
     }
 
     d3.csv(srcOpenness).then((data, error) => {
