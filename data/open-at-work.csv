@@ -2,6 +2,30 @@ CountryCode,question_code,question_label,target_group,subset,answer,percentage
 France,DEXindg1c,Openness about being LGBTI at work,All,All,Very open,23
 France,DEXindg1c,Openness about being LGBTI at work,All,All,Selectively open,50
 France,DEXindg1c,Openness about being LGBTI at work,All,All,Hide LGBT identity,27
+France,DEXindg1c,Openness about being LGBTI at work,Lesbian women,All,Very open,30
+France,DEXindg1c,Openness about being LGBTI at work,Lesbian women,All,Selectively open,57
+France,DEXindg1c,Openness about being LGBTI at work,Lesbian women,All,Hide LGBT identity,13
+France,DEXindg1c,Openness about being LGBTI at work,Gay men,All,Very open,34
+France,DEXindg1c,Openness about being LGBTI at work,Gay men,All,Selectively open,49
+France,DEXindg1c,Openness about being LGBTI at work,Gay men,All,Hide LGBT identity,17
+France,DEXindg1c,Openness about being LGBTI at work,Trans people,All,Very open,18
+France,DEXindg1c,Openness about being LGBTI at work,Trans people,All,Selectively open,44
+France,DEXindg1c,Openness about being LGBTI at work,Trans people,All,Hide LGBT identity,38
+France,DEXindg1c,Openness about being LGBTI at work,Intersex people,All,Very open,10
+France,DEXindg1c,Openness about being LGBTI at work,Intersex people,All,Selectively open,42
+France,DEXindg1c,Openness about being LGBTI at work,Intersex people,All,Hide LGBT identity,48
 EU-28,DEXindg1c,Openness about being LGBTI at work,All,All,Very open,21
 EU-28,DEXindg1c,Openness about being LGBTI at work,All,All,Selectively open,53
 EU-28,DEXindg1c,Openness about being LGBTI at work,All,All,Hide LGBT identity,26
+EU-28,DEXindg1c,Openness about being LGBTI at work,Lesbian women,All,Very open,28
+EU-28,DEXindg1c,Openness about being LGBTI at work,Lesbian women,All,Selectively open,58
+EU-28,DEXindg1c,Openness about being LGBTI at work,Lesbian women,All,Hide LGBT identity,14
+EU-28,DEXindg1c,Openness about being LGBTI at work,Gay men,All,Very open,29
+EU-28,DEXindg1c,Openness about being LGBTI at work,Gay men,All,Selectively open,52
+EU-28,DEXindg1c,Openness about being LGBTI at work,Gay men,All,Hide LGBT identity,19
+EU-28,DEXindg1c,Openness about being LGBTI at work,Trans people,All,Very open,15
+EU-28,DEXindg1c,Openness about being LGBTI at work,Trans people,All,Selectively open,47
+EU-28,DEXindg1c,Openness about being LGBTI at work,Trans people,All,Hide LGBT identity,37
+EU-28,DEXindg1c,Openness about being LGBTI at work,Intersex people,All,Very open,11
+EU-28,DEXindg1c,Openness about being LGBTI at work,Intersex people,All,Selectively open,49
+EU-28,DEXindg1c,Openness about being LGBTI at work,Intersex people,All,Hide LGBT identity,40

@@ -1,5 +1,21 @@
 CountryCode,question_code,question_label,target_group,subset,answer,percentage
 France,DEXschool_leav,Leaving or changing school due to being LGBTI,All,All,Yes,11
 France,DEXschool_leav,Leaving or changing school due to being LGBTI,All,All,No,89
+France,DEXschool_leav,Leaving or changing school due to being LGBTI,Lesbian women,All,Yes,5
+France,DEXschool_leav,Leaving or changing school due to being LGBTI,Lesbian women,All,No,95
+France,DEXschool_leav,Leaving or changing school due to being LGBTI,Gay men,All,Yes,15
+France,DEXschool_leav,Leaving or changing school due to being LGBTI,Gay men,All,No,85
+France,DEXschool_leav,Leaving or changing school due to being LGBTI,Trans people,All,Yes,19
+France,DEXschool_leav,Leaving or changing school due to being LGBTI,Trans people,All,No,81
+France,DEXschool_leav,Leaving or changing school due to being LGBTI,Intersex people,All,Yes,26
+France,DEXschool_leav,Leaving or changing school due to being LGBTI,Intersex people,All,No,74
 EU-28,DEXschool_leav,Leaving or changing school due to being LGBTI,All,All,Yes,11
 EU-28,DEXschool_leav,Leaving or changing school due to being LGBTI,All,All,No,89
+EU-28,DEXschool_leav,Leaving or changing school due to being LGBTI,Lesbian women,All,Yes,7
+EU-28,DEXschool_leav,Leaving or changing school due to being LGBTI,Lesbian women,All,No,93
+EU-28,DEXschool_leav,Leaving or changing school due to being LGBTI,Gay men,All,Yes,15
+EU-28,DEXschool_leav,Leaving or changing school due to being LGBTI,Gay men,All,No,85
+EU-28,DEXschool_leav,Leaving or changing school due to being LGBTI,Trans people,All,Yes,18
+EU-28,DEXschool_leav,Leaving or changing school due to being LGBTI,Trans people,All,No,82
+EU-28,DEXschool_leav,Leaving or changing school due to being LGBTI,Intersex people,All,Yes,27
+EU-28,DEXschool_leav,Leaving or changing school due to being LGBTI,Intersex people,All,No,73

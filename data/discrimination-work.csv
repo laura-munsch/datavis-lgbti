@@ -1,5 +1,21 @@
 CountryCode,question_code,question_label,target_group,subset,answer,percentage
 France,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,All,All,Yes,21
 France,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,All,All,No,79
+France,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,Lesbian women,All,Yes,21
+France,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,Lesbian women,All,No,79
+France,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,Gay men,All,Yes,20
+France,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,Gay men,All,No,80
+France,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,Trans people,All,Yes,37
+France,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,Trans people,All,No,63
+France,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,Intersex people,All,Yes,28
+France,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,Intersex people,All,No,72
 EU-28,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,All,All,Yes,22
 EU-28,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,All,All,No,78
+EU-28,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,Lesbian women,All,Yes,21
+EU-28,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,Lesbian women,All,No,79
+EU-28,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,Gay men,All,Yes,20
+EU-28,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,Gay men,All,No,80
+EU-28,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,Trans people,All,Yes,40
+EU-28,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,Trans people,All,No,60
+EU-28,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,Intersex people,All,Yes,38
+EU-28,DEXindd1_3,Discrimination in the past 12 months at work or when looking for work,Intersex people,All,No,62
