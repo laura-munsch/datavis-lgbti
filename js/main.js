@@ -1,6 +1,12 @@
 window.onload = function() {
     'use strict';
 
+    const btnAll = document.getElementById('data-all');
+    const btnLesbians = document.getElementById('data-lesbians');
+    const btnGay = document.getElementById('data-gay');
+    const btnTrans = document.getElementById('data-trans');
+    const btnIntersex = document.getElementById('data-intersex');
+
     const allData = [];
 
     const srcOpenness               = './data/openness.csv';
@@ -187,24 +193,79 @@ window.onload = function() {
             .attr('fill', colors.transparent)
             .attr('stroke', colors.contour);
 
-        selection
+        let franceCircle = selection
             .enter()
             .append('ellipse')
             .attr('cx', d => d.width)
             .attr('cy', d => d.height)
-            .attr('rx', d => d.fr.percentage * d.size / 100)
-            .attr('ry', d => d.fr.percentage * d.size / 100)
             .attr('fill', colors.france)
             .attr('stroke', colors.transparent);
 
-        selection
+        let euCircle = selection
             .enter()
             .append('ellipse')
             .attr('cx', d => d.width)
             .attr('cy', d => d.height)
-            .attr('rx', d => d.eu.percentage * d.size / 100)
-            .attr('ry', d => d.eu.percentage * d.size / 100)
             .attr('fill', colors.transparent)
             .attr('stroke', colors.europe);
+
+        franceCircle
+            .attr('rx', d => d.fr.percentage * d.size / 100)
+            .attr('ry', d => d.fr.percentage * d.size / 100);
+
+        euCircle
+            .attr('rx', d => d.eu.percentage * d.size / 100)
+            .attr('ry', d => d.eu.percentage * d.size / 100);
+
+
+        btnAll.addEventListener('click', () => {
+            franceCircle
+                .attr('rx', d => d.fr.percentage * d.size / 100)
+                .attr('ry', d => d.fr.percentage * d.size / 100);
+
+            euCircle
+                .attr('rx', d => d.eu.percentage * d.size / 100)
+                .attr('ry', d => d.eu.percentage * d.size / 100);
+        });
+
+        btnLesbians.addEventListener('click', () => {
+            franceCircle
+                .attr('rx', d => d.fr_lesbians.percentage * d.size / 100)
+                .attr('ry', d => d.fr_lesbians.percentage * d.size / 100);
+
+            euCircle
+                .attr('rx', d => d.eu_lesbians.percentage * d.size / 100)
+                .attr('ry', d => d.eu_lesbians.percentage * d.size / 100);
+        });
+
+        btnGay.addEventListener('click', () => {
+            franceCircle
+                .attr('rx', d => d.fr_gay.percentage * d.size / 100)
+                .attr('ry', d => d.fr_gay.percentage * d.size / 100);
+
+            euCircle
+                .attr('rx', d => d.eu_gay.percentage * d.size / 100)
+                .attr('ry', d => d.eu_gay.percentage * d.size / 100);
+        });
+
+        btnTrans.addEventListener('click', () => {
+            franceCircle
+                .attr('rx', d => d.fr_trans.percentage * d.size / 100)
+                .attr('ry', d => d.fr_trans.percentage * d.size / 100);
+
+            euCircle
+                .attr('rx', d => d.eu_trans.percentage * d.size / 100)
+                .attr('ry', d => d.eu_trans.percentage * d.size / 100);
+        });
+
+        btnIntersex.addEventListener('click', () => {
+            franceCircle
+                .attr('rx', d => d.fr_intersex.percentage * d.size / 100)
+                .attr('ry', d => d.fr_intersex.percentage * d.size / 100);
+
+            euCircle
+                .attr('rx', d => d.eu_intersex.percentage * d.size / 100)
+                .attr('ry', d => d.eu_intersex.percentage * d.size / 100);
+        });
     });
 }
