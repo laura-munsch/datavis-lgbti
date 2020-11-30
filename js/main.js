@@ -39,12 +39,28 @@ window.onload = function() {
     }
 
     function logData(data, width, height, size) {
-        let eu = data.filter(d => d.CountryCode == "EU-28")[0];
-        let fr = data.filter(d => d.CountryCode == "France")[0];
+        let eu = data.filter(d => d.CountryCode == "EU-28" && d.target_group == "All")[0];
+        let fr = data.filter(d => d.CountryCode == "France" && d.target_group == "All")[0];
+        let euLesbians = data.filter(d => d.CountryCode == "EU-28" && d.target_group == "Lesbian women")[0];
+        let frLesbians = data.filter(d => d.CountryCode == "France" && d.target_group == "Lesbian women")[0];
+        let euGay = data.filter(d => d.CountryCode == "EU-28" && d.target_group == "Gay men")[0];
+        let frGay = data.filter(d => d.CountryCode == "France" && d.target_group == "Gay men")[0];
+        let euTrans = data.filter(d => d.CountryCode == "EU-28" && d.target_group == "Trans people")[0];
+        let frTrans = data.filter(d => d.CountryCode == "France" && d.target_group == "Trans people")[0];
+        let euIntersex = data.filter(d => d.CountryCode == "EU-28" && d.target_group == "Intersex people")[0];
+        let frIntersex = data.filter(d => d.CountryCode == "France" && d.target_group == "Intersex people")[0];
 
         allData.push({
-            europe: eu,
-            france: fr,
+            eu: eu,
+            fr: fr,
+            eu_lesbians: euLesbians,
+            fr_lesbians: frLesbians,
+            eu_gay: euGay,
+            fr_gay: frGay,
+            eu_trans: euTrans,
+            fr_trans: frTrans,
+            eu_intersex: euIntersex,
+            fr_intersex: frIntersex,
             width: width,
             height: height,
             size: size
@@ -176,8 +192,8 @@ window.onload = function() {
             .append('ellipse')
             .attr('cx', d => d.width)
             .attr('cy', d => d.height)
-            .attr('rx', d => d.france.percentage * d.size / 100)
-            .attr('ry', d => d.france.percentage * d.size / 100)
+            .attr('rx', d => d.fr.percentage * d.size / 100)
+            .attr('ry', d => d.fr.percentage * d.size / 100)
             .attr('fill', colors.france)
             .attr('stroke', colors.transparent);
 
@@ -186,8 +202,8 @@ window.onload = function() {
             .append('ellipse')
             .attr('cx', d => d.width)
             .attr('cy', d => d.height)
-            .attr('rx', d => d.europe.percentage * d.size / 100)
-            .attr('ry', d => d.europe.percentage * d.size / 100)
+            .attr('rx', d => d.eu.percentage * d.size / 100)
+            .attr('ry', d => d.eu.percentage * d.size / 100)
             .attr('fill', colors.transparent)
             .attr('stroke', colors.europe);
     });
