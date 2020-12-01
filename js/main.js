@@ -30,7 +30,12 @@ window.onload = function() {
         europe: 'black'
     }
 
-    const svg = d3.select('#container')
+    const svg = d3.select('#container-1')
+        .append('svg')
+        .attr('width', canvas.width)
+        .attr('height', canvas.height);
+
+    const svg2 = d3.select('#container-2')
         .append('svg')
         .attr('width', canvas.width)
         .attr('height', canvas.height);
@@ -181,6 +186,9 @@ window.onload = function() {
     ]).then(() => {
         console.log(allData);
 
+
+        // PREMIERE VISUALISATION (CERCLES)
+
         let selection = svg.selectAll('ellipse').data(allData);
 
         selection
@@ -218,6 +226,41 @@ window.onload = function() {
             .attr('ry', d => d.eu.all.percentage * d.size / 100);
 
 
+        // DEUXIEME VISUALISATION (LIGNES)
+
+        let selection2 = svg2.selectAll('p').data(allData);
+        
+        selection2
+            .enter()
+            .append('text')
+            .attr('x', 700)
+            .attr('y', (d, i) => i * 50 + 9)
+            .attr('text-anchor', 'end')
+            .text(d => d.fr.all.question_label)
+
+        selection2
+            .enter()
+            .append('line')
+            .attr('x1', 710)
+            .attr('y1', (d, i) => i * 50 + 5)
+            .attr('x2', 100 * 5 + 710)
+            .attr('y2', (d, i) => i * 50 + 5)
+            .attr('stroke', colors.contour);
+
+        let line = selection2
+            .enter()
+            .append('line')
+            .attr('x1', 710)
+            .attr('y1', (d, i) => i * 50 + 5)
+            .attr('y2', (d, i) => i * 50 + 5)
+            .attr('stroke', colors.europe);
+
+        line
+            .attr('x2', d => (d.fr.all.percentage * 5)  + 710)
+
+        
+        // MODIFICATIONS AU CLIC SUR LES BOUTONS
+
         buttons.forEach(btn => {
             btn.addEventListener('click', () => {
                 let group = btn.dataset.group;
@@ -235,6 +278,12 @@ window.onload = function() {
                     .duration(200)
                     .attr('rx', d => d.eu[group].percentage * d.size / 100)
                     .attr('ry', d => d.eu[group].percentage * d.size / 100);
+
+                line
+                    .transition()
+                    .ease(d3.easeLinear)
+                    .duration(200)
+                    .attr('x2', d => (d.fr[group].percentage * 5)  + 710)
             });
         });
     });
