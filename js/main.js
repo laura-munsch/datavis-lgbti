@@ -236,33 +236,59 @@ window.onload = function() {
 
         let selection2 = svg2.selectAll('p').data(allData);
         
-        selection2
+        let group = selection2
             .enter()
+            .append('g')
+            .attr('transform', (d, i) => 'translate(0,' + (i * 50 + 35) + ')');
+            
+        group
             .append('text')
             .attr('x', 700)
-            .attr('y', (d, i) => i * 50 + 39)
+            .attr('y', 4)
             .attr('text-anchor', 'end')
             .text(d => d.fr.all.question_label)
 
-        selection2
-            .enter()
+        group
             .append('line')
             .attr('x1', 710)
-            .attr('y1', (d, i) => i * 50 + 35)
             .attr('x2', 100 * 5 + 710)
-            .attr('y2', (d, i) => i * 50 + 35)
             .attr('stroke', colors.contour);
 
-        let line = selection2
-            .enter()
+        /* let line = group
             .append('line')
             .attr('x1', 710)
-            .attr('y1', (d, i) => i * 50 + 35)
-            .attr('y2', (d, i) => i * 50 + 35)
             .attr('stroke', colors.europe);
 
         line
-            .attr('x2', d => (d.fr.all.percentage * 5)  + 710)
+            .attr('x2', d => (d.fr.all.percentage * 5)  + 710) */
+
+        group
+            .selectAll('ellipse')
+            .data(datum => {
+                return Object.values(datum.fr)
+            })
+            .enter()
+            .append('ellipse')
+            .attr('cx', (d) => (d.percentage * 5) + 710)
+            .attr('rx', 5)
+            .attr('fill', (d) => {
+                console.log(d);
+                switch(d.target_group) {
+                    case 'All' :
+                        return colors.all;
+                    case 'Trans people' :
+                        return colors.trans;
+                    case 'Intersex people' : 
+                        return colors.intersex;
+                    case 'Lesbian women' :
+                        return colors.lesbians;
+                    case 'Gay men' :
+                        return colors.gay;
+                    default :
+                        colors.all;
+                }
+            })
+            .text((d) => d.question_label);
 
         
         // MODIFICATIONS AU CLIC SUR LES BOUTONS
@@ -293,11 +319,11 @@ window.onload = function() {
                     .attr('rx', d => d.eu[group].percentage * d.size / 100)
                     .attr('ry', d => d.eu[group].percentage * d.size / 100);
 
-                line
+                /* line
                     .transition()
                     .ease(d3.easeLinear)
                     .duration(200)
-                    .attr('x2', d => (d.fr[group].percentage * 5)  + 710)
+                    .attr('x2', d => (d.fr[group].percentage * 5)  + 710) */
             });
         });
 
