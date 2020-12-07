@@ -3,27 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Data visualisation</title>
-
-    <style>
-        body {
-            padding: 0;
-            margin: 0;
-            font-size: 12px;
-        }
-
-        .buttons {
-            position: fixed;
-        }
-    </style>
 </head>
 <body>
     <div class="buttons">
-        <button data-group="all">Tout</button>
-        <button data-group="lesbians">Lesbiennes</button>
-        <button data-group="gay">Gay</button>
-        <button data-group="trans">Trans</button>
-        <button data-group="intersex">Intersexes</button>
+        <button class="btn-target-group active" data-group="all">Tout</button>
+        <button class="btn-target-group" data-group="lesbians">Lesbiennes</button>
+        <button class="btn-target-group" data-group="gay">Gay</button>
+        <button class="btn-target-group" data-group="trans">Trans</button>
+        <button class="btn-target-group" data-group="intersex">Intersexes</button>
+        Changer de vue :
+        <button class="btn-view active" data-view="circles">Cercles</button>
+        <button class="btn-view" data-view="lines">Lignes</button>
     </div>
 
     <div id="container-1">

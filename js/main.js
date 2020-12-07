@@ -1,7 +1,9 @@
 window.onload = function() {
     'use strict';
 
-    const buttons = Array.from(document.getElementsByTagName('button'));
+    const body = document.getElementsByTagName('body')[0];
+    const btnGroups = Array.from(document.getElementsByClassName('btn-target-group'));
+    const btnViews = Array.from(document.getElementsByClassName('btn-view'));
 
     const allData = [];
 
@@ -20,7 +22,7 @@ window.onload = function() {
 
     const canvas = {
         width: window.innerWidth,
-        height: window.innerHeight - 5,
+        height: window.innerHeight - 100,
     }
 
     const colors = {
@@ -234,7 +236,7 @@ window.onload = function() {
             .enter()
             .append('text')
             .attr('x', 700)
-            .attr('y', (d, i) => i * 50 + 9)
+            .attr('y', (d, i) => i * 50 + 39)
             .attr('text-anchor', 'end')
             .text(d => d.fr.all.question_label)
 
@@ -242,17 +244,17 @@ window.onload = function() {
             .enter()
             .append('line')
             .attr('x1', 710)
-            .attr('y1', (d, i) => i * 50 + 5)
+            .attr('y1', (d, i) => i * 50 + 35)
             .attr('x2', 100 * 5 + 710)
-            .attr('y2', (d, i) => i * 50 + 5)
+            .attr('y2', (d, i) => i * 50 + 35)
             .attr('stroke', colors.contour);
 
         let line = selection2
             .enter()
             .append('line')
             .attr('x1', 710)
-            .attr('y1', (d, i) => i * 50 + 5)
-            .attr('y2', (d, i) => i * 50 + 5)
+            .attr('y1', (d, i) => i * 50 + 35)
+            .attr('y2', (d, i) => i * 50 + 35)
             .attr('stroke', colors.europe);
 
         line
@@ -261,8 +263,14 @@ window.onload = function() {
         
         // MODIFICATIONS AU CLIC SUR LES BOUTONS
 
-        buttons.forEach(btn => {
+        btnGroups.forEach(btn => {
             btn.addEventListener('click', () => {
+                document
+                    .querySelector('.btn-target-group.active')
+                    .classList.remove('active');
+
+                btn.classList.add('active');
+
                 let group = btn.dataset.group;
 
                 franceCircle
@@ -286,5 +294,19 @@ window.onload = function() {
                     .attr('x2', d => (d.fr[group].percentage * 5)  + 710)
             });
         });
+
+        btnViews.forEach(btn => {
+            btn.addEventListener('click', () => {
+                document
+                    .querySelector('.btn-view.active')
+                    .classList.remove('active');
+                    
+                btn.classList.add('active');
+
+                let view = btn.dataset.view;
+
+                body.classList = view;
+            });
+        })
     });
 }
