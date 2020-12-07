@@ -28,8 +28,12 @@ window.onload = function() {
     const colors = {
         transparent: 'rgba(0, 0, 0, 0)',
         contour: '#e1e1e1',
-        france: '#ddddff',
-        europe: 'black'
+        europe: 'black',
+        all: '#FFD6E0',
+        trans: '#90F1EF',
+        intersex: '#FFEF9F',
+        gay: '#C1FBA4',
+        lesbians: '#ddddff'
     }
 
     const svg = d3.select('#container-1')
@@ -208,7 +212,7 @@ window.onload = function() {
             .append('ellipse')
             .attr('cx', d => d.width)
             .attr('cy', d => d.height)
-            .attr('fill', colors.france)
+            .attr('fill', colors.all)
             .attr('stroke', colors.transparent);
 
         let euCircle = selection
@@ -272,13 +276,15 @@ window.onload = function() {
                 btn.classList.add('active');
 
                 let group = btn.dataset.group;
+                let color = colors[group];
 
                 franceCircle
                     .transition()
                     .ease(d3.easeLinear)
                     .duration(200)
                     .attr('rx', d => d.fr[group].percentage * d.size / 100)
-                    .attr('ry', d => d.fr[group].percentage * d.size / 100);
+                    .attr('ry', d => d.fr[group].percentage * d.size / 100)
+                    .attr('fill', color);
 
                 euCircle
                     .transition()
