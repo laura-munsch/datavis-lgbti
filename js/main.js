@@ -28,7 +28,8 @@ window.onload = function() {
     const colors = {
         transparent: 'rgba(0, 0, 0, 0)',
         contour: '#5f5f5f',
-        europe: '#ffffff',
+        fond: '#ffffff',
+        europe: '#000000',
         all: '#FFD6E0',
         trans: '#90F1EF',
         intersex: '#FFEF9F',
@@ -204,8 +205,7 @@ window.onload = function() {
             .attr('cy', d => d.height)
             .attr('rx', d => d.size)
             .attr('ry', d => d.size)
-            .attr('fill', colors.transparent)
-            .attr('stroke', colors.contour);
+            .attr('fill', colors.fond)
 
         let franceCircle = selection
             .enter()
@@ -213,8 +213,6 @@ window.onload = function() {
             .attr('cx', d => d.width)
             .attr('cy', d => d.height)
             .attr('fill', colors.all)
-            .attr('opacity', 0.2)
-            .attr('stroke', colors.transparent);
 
         let euCircle = selection
             .enter()
