@@ -27,8 +27,8 @@ window.onload = function() {
 
     const colors = {
         transparent: 'rgba(0, 0, 0, 0)',
-        contour: '#e1e1e1',
-        europe: 'black',
+        contour: '#5f5f5f',
+        europe: '#ffffff',
         all: '#FFD6E0',
         trans: '#90F1EF',
         intersex: '#FFEF9F',
@@ -213,6 +213,7 @@ window.onload = function() {
             .attr('cx', d => d.width)
             .attr('cy', d => d.height)
             .attr('fill', colors.all)
+            .attr('opacity', 0.2)
             .attr('stroke', colors.transparent);
 
         let euCircle = selection
@@ -239,13 +240,14 @@ window.onload = function() {
         let group = selection2
             .enter()
             .append('g')
-            .attr('transform', (d, i) => 'translate(0,' + (i * 50 + 35) + ')');
+            .attr('transform', (d, i) => 'translate(0,' + (i * 50 + 100) + ')');
             
         group
             .append('text')
             .attr('x', 700)
             .attr('y', 4)
             .attr('text-anchor', 'end')
+            .attr('fill', '#ffffff')
             .text(d => d.fr.all.question_label)
 
         group

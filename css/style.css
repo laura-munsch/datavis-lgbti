@@ -2,6 +2,8 @@ body {
     padding: 0;
     margin: 0;
     font-size: 12px;
+    background-color: rgb(22, 22, 22);
+    color: white;
 }
 
 #container-2 {
@@ -33,48 +35,65 @@ body.lines #container-2 {
 button {
     outline: none;
     background: none;
-    border: 1px solid black;
+    border: 1px solid white;
     padding: 0.4em 0.8em;
-    color: black;
+    color: white;
     margin-bottom: 0.5em;
 }
 
 button.active {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 button.all {
-    background-color: #FFD6E0;
-    color: black;
     border-color: #FFD6E0;
+    color: #FFD6E0;
 }
 
 button.intersex {
-    background-color: #FFEF9F;
-    color: black;
-    border-color:  #FFEF9F;
+    border-color: #FFEF9F;
+    color: #FFEF9F;
+
 }
 
 button.trans {
-    background-color: #90F1EF;
-    color: black;
     border-color: #90F1EF;
+    color: #90F1EF;
 }
 
 button.gay {
-    background-color: #C1FBA4;
-    color: black;
     border-color: #C1FBA4;
+    color: #C1FBA4;
 }
 
 button.lesbians {
-    background-color: #ddddff;
-    color: black;
     border-color: #ddddff;
+    color: #ddddff;
 }
 
-button.active {
-    font-weight: bold;
-    border-color: black
+button.all.active {
+    background-color: #FFD6E0;
+    color: black;
+}
+
+button.intersex.active {
+    background-color: #FFEF9F;
+    color: black;
+
+}
+
+button.trans.active {
+    background-color: #90F1EF;
+    color: black;
+}
+
+button.gay.active {
+    background-color: #C1FBA4;
+    color: black;
+}
+
+button.lesbians.active {
+    background-color: #ddddff;
+    color: black;
 }
