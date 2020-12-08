@@ -5,6 +5,7 @@ window.onload = function() {
     const btnGroups = Array.from(document.getElementsByClassName('btn-target-group'));
     const btnViews = Array.from(document.getElementsByClassName('btn-view'));
     const btnZones = Array.from(document.getElementsByClassName('btn-zone'));
+    const ctnBtnZones = Array.from(document.getElementById('ctn-btn-zone'));
 
     const allData = [];
 
@@ -84,6 +85,23 @@ window.onload = function() {
             height: height,
             size: size
         });
+    }
+
+    function displayTargetGroup(targetGroup) {
+        switch(targetGroup) {
+            case 'All' :
+                return 'all';
+            case 'Trans people' :
+                return 'trans';
+            case 'Intersex people' : 
+                return 'intersex';
+            case 'Lesbian women' :
+                return 'lesbians';
+            case 'Gay men' :
+                return 'gay';
+            default :
+                'all';
+        }
     }
 
     d3.csv(srcOpenness).then((data, error) => {
@@ -257,29 +275,13 @@ window.onload = function() {
 
         group
             .selectAll('ellipse')
-            .data(datum => {
-                return Object.values(datum.fr)
-            })
+            .data(datum => Object.values(datum.fr))
             .enter()
             .append('ellipse')
+            .attr('class', (d) => displayTargetGroup(d.target_group))
             .attr('cx', (d) => (d.percentage * 5) + 710)
-            .attr('rx', 5)
-            .attr('fill', (d) => {
-                switch(d.target_group) {
-                    case 'All' :
-                        return colors.all;
-                    case 'Trans people' :
-                        return colors.trans;
-                    case 'Intersex people' : 
-                        return colors.intersex;
-                    case 'Lesbian women' :
-                        return colors.lesbians;
-                    case 'Gay men' :
-                        return colors.gay;
-                    default :
-                        colors.all;
-                }
-            });
+            .attr('rx', (d) => d.target_group == 'All' ? 15 : 5)
+            .attr('fill', (d) => colors[displayTargetGroup(d.target_group)]);
         
         // MODIFICATIONS AU CLIC SUR LES BOUTONS
 
@@ -308,6 +310,20 @@ window.onload = function() {
                     .duration(200)
                     .attr('rx', d => d.eu[group].percentage * d.size / 100)
                     .attr('ry', d => d.eu[group].percentage * d.size / 100);
+
+                svg2
+                    .transition()
+                    .ease(d3.easeLinear)
+                    .duration(200)
+                    .selectAll('ellipse')
+                    .attr('rx', 5)
+
+                svg2
+                    .transition()
+                    .ease(d3.easeLinear)
+                    .duration(200)
+                    .selectAll('.' + group)
+                    .attr('rx', 15)
             });
         });
 

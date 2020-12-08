@@ -26,6 +26,14 @@ body.lines #container-2 {
     display: block;
 }
 
+#ctn-btn-zone {
+    display: none;
+}
+
+body.lines #ctn-btn-zone {
+    display: block;
+}
+
 .buttons {
     position: fixed;
     top: 5px;
