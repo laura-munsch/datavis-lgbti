@@ -4,6 +4,7 @@ window.onload = function() {
     const body = document.getElementsByTagName('body')[0];
     const btnGroups = Array.from(document.getElementsByClassName('btn-target-group'));
     const btnViews = Array.from(document.getElementsByClassName('btn-view'));
+    const btnZones = Array.from(document.getElementsByClassName('btn-zone'));
 
     const allData = [];
 
@@ -254,14 +255,6 @@ window.onload = function() {
             .attr('x2', 100 * 5 + 710)
             .attr('stroke', colors.contour);
 
-        /* let line = group
-            .append('line')
-            .attr('x1', 710)
-            .attr('stroke', colors.europe);
-
-        line
-            .attr('x2', d => (d.fr.all.percentage * 5)  + 710) */
-
         group
             .selectAll('ellipse')
             .data(datum => {
@@ -272,7 +265,6 @@ window.onload = function() {
             .attr('cx', (d) => (d.percentage * 5) + 710)
             .attr('rx', 5)
             .attr('fill', (d) => {
-                console.log(d);
                 switch(d.target_group) {
                     case 'All' :
                         return colors.all;
@@ -287,9 +279,7 @@ window.onload = function() {
                     default :
                         colors.all;
                 }
-            })
-            .text((d) => d.question_label);
-
+            });
         
         // MODIFICATIONS AU CLIC SUR LES BOUTONS
 
@@ -318,12 +308,6 @@ window.onload = function() {
                     .duration(200)
                     .attr('rx', d => d.eu[group].percentage * d.size / 100)
                     .attr('ry', d => d.eu[group].percentage * d.size / 100);
-
-                /* line
-                    .transition()
-                    .ease(d3.easeLinear)
-                    .duration(200)
-                    .attr('x2', d => (d.fr[group].percentage * 5)  + 710) */
             });
         });
 
@@ -339,6 +323,28 @@ window.onload = function() {
 
                 body.classList = view;
             });
-        })
+        });
+
+        btnZones.forEach(btn => {
+            btn.addEventListener('click', () => {
+                document
+                    .querySelector('.btn-zone.active')
+                    .classList.remove('active');
+                    
+                btn.classList.add('active');
+
+                let group = btn.dataset.zone;
+
+                svg2
+                    .selectAll('g')
+                    .data(allData)
+                    .selectAll('ellipse')
+                    .data(datum => Object.values(datum[group]))
+                    .transition()
+                    .ease(d3.easeLinear)
+                    .duration(200)
+                    .attr('cx', (d) => (d.percentage * 5) + 710);
+            });
+        });
     });
 }
