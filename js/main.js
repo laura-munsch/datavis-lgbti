@@ -103,6 +103,16 @@ window.onload = function() {
         }
     }
 
+    function displayAnswer(answer) {
+        if (answer != 'Never' && 
+            answer != 'Yes' && 
+            answer != 'No') {
+            return '(' + answer + ')';
+        } else {
+            return;
+        }
+    }
+
     d3.csv(srcOpenness).then((data, error) => {
         if (error) throw error;
         data = answer(data, 'Very open');
@@ -219,18 +229,19 @@ window.onload = function() {
         selection
             .enter()
             .append('ellipse')
+            .classed('circle-to-hover', true)
             .attr('cx', d => d.width)
             .attr('cy', d => d.height)
             .attr('rx', d => d.size)
             .attr('ry', d => d.size)
-            .attr('fill', colors.fond)
+            .attr('fill', colors.fond);
 
         let franceCircle = selection
             .enter()
             .append('ellipse')
             .attr('cx', d => d.width)
             .attr('cy', d => d.height)
-            .attr('fill', colors.all)
+            .attr('fill', colors.all);
 
         let euCircle = selection
             .enter()
@@ -247,6 +258,47 @@ window.onload = function() {
         euCircle
             .attr('rx', d => d.eu.all.percentage * d.size / 100)
             .attr('ry', d => d.eu.all.percentage * d.size / 100);
+
+        let textPercentage = svg
+            .append('text')
+            .attr('text-anchor', 'middle')
+            .attr('x', canvas.width / 2)
+            .attr('y', 640)
+            .attr('fill', '#ffffff')
+            .attr('font-size', 26);
+
+        let textQuestion = svg
+            .append('text')
+            .attr('text-anchor', 'middle')
+            .attr('x', canvas.width / 2)
+            .attr('y', 670)
+            .attr('fill', '#ffffff');
+
+        let textAnswer = svg
+            .append('text')
+            .attr('text-anchor', 'middle')
+            .attr('x', canvas.width / 2)
+            .attr('y', 690)
+            .attr('fill', '#ffffff')
+            .attr('opacity', 0.4);
+
+        function emptyText() {
+            textPercentage.text('');
+            textQuestion.text('Hover a circle to show informations...');
+            textAnswer.text('');
+        }
+
+        emptyText();
+
+        d3.selectAll('.circle-to-hover')
+            .on('mouseover', (e) => {
+                let zone = document.querySelector('.btn-zone.active').dataset.zone;
+                let group = document.querySelector('.btn-target-group.active').dataset.group;
+
+                textPercentage.text(e[zone][group].percentage + '%');
+                textQuestion.text(e[zone][group].question_label);
+                textAnswer.text(displayAnswer(e[zone][group].answer));
+            });
 
 
         // DEUXIEME VISUALISATION (LIGNES)
@@ -298,14 +350,9 @@ window.onload = function() {
             .attr('text-anchor', 'start')
             .attr('fill', '#ffffff')
             .attr('opacity', 0.4)
-            .text(d => {
-                if (d.fr.all.answer != 'Never' && 
-                    d.fr.all.answer != 'Yes' && 
-                    d.fr.all.answer != 'No') {
-                    return '(' + d.fr.all.answer + ')';
-                }
-            });
-        
+            .text(d => displayAnswer(d.fr.all.answer));
+    
+
         // MODIFICATIONS AU CLIC SUR LES BOUTONS
 
         btnGroups.forEach(btn => {
@@ -352,6 +399,8 @@ window.onload = function() {
                 svg2
                     .selectAll('.text-percentage')
                     .text(d => d[zone][group].percentage + '%' );
+
+                emptyText();
             });
         });
 
@@ -393,6 +442,8 @@ window.onload = function() {
                 let view = btn.dataset.view;
 
                 body.classList = view;
+
+                emptyText();
             });
         });
     });
