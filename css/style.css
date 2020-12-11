@@ -34,10 +34,16 @@ body.lines #ctn-btn-zone {
     display: block;
 }
 
-.buttons {
+.buttons-top {
     position: fixed;
     top: 5px;
     left: 5px;
+}
+
+.buttons-bottom {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
 }
 
 button {

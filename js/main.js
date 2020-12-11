@@ -5,7 +5,6 @@ window.onload = function() {
     const btnGroups = Array.from(document.getElementsByClassName('btn-target-group'));
     const btnViews = Array.from(document.getElementsByClassName('btn-view'));
     const btnZones = Array.from(document.getElementsByClassName('btn-zone'));
-    const ctnBtnZones = Array.from(document.getElementById('ctn-btn-zone'));
 
     const allData = [];
 
@@ -24,7 +23,7 @@ window.onload = function() {
 
     const canvas = {
         width: window.innerWidth,
-        height: window.innerHeight - 100,
+        height: window.innerHeight - 10,
     }
 
     const colors = {
@@ -282,6 +281,30 @@ window.onload = function() {
             .attr('cx', (d) => (d.percentage * 5) + 710)
             .attr('rx', (d) => d.target_group == 'All' ? 15 : 5)
             .attr('fill', (d) => colors[displayTargetGroup(d.target_group)]);
+
+        group
+            .append('text')
+            .classed('text-percentage', true)
+            .attr('x', 1220)
+            .attr('y', 4)
+            .attr('text-anchor', 'start')
+            .attr('fill', '#ffffff')
+            .text(d => d.fr.all.percentage + '%')
+
+        group
+            .append('text')
+            .attr('x', 1255)
+            .attr('y', 4)
+            .attr('text-anchor', 'start')
+            .attr('fill', '#ffffff')
+            .attr('opacity', 0.4)
+            .text(d => {
+                if (d.fr.all.answer != 'Never' && 
+                    d.fr.all.answer != 'Yes' && 
+                    d.fr.all.answer != 'No') {
+                    return '(' + d.fr.all.answer + ')';
+                }
+            });
         
         // MODIFICATIONS AU CLIC SUR LES BOUTONS
 
@@ -293,6 +316,7 @@ window.onload = function() {
 
                 btn.classList.add('active');
 
+                let zone = document.querySelector('.btn-zone.active').dataset.zone;
                 let group = btn.dataset.group;
                 let color = colors[group];
 
@@ -316,14 +340,45 @@ window.onload = function() {
                     .ease(d3.easeLinear)
                     .duration(200)
                     .selectAll('ellipse')
-                    .attr('rx', 5)
+                    .attr('rx', 5);
 
                 svg2
                     .transition()
                     .ease(d3.easeLinear)
                     .duration(200)
                     .selectAll('.' + group)
-                    .attr('rx', 15)
+                    .attr('rx', 15);
+
+                svg2
+                    .selectAll('.text-percentage')
+                    .text(d => d[zone][group].percentage + '%' );
+            });
+        });
+
+        btnZones.forEach(btn => {
+            btn.addEventListener('click', () => {
+                document
+                    .querySelector('.btn-zone.active')
+                    .classList.remove('active');
+                    
+                btn.classList.add('active');
+
+                let zone = btn.dataset.zone;
+                let group = document.querySelector('.btn-target-group.active').dataset.group;
+
+                svg2
+                    .selectAll('g')
+                    .data(allData)
+                    .selectAll('ellipse')
+                    .data(datum => Object.values(datum[zone]))
+                    .transition()
+                    .ease(d3.easeLinear)
+                    .duration(200)
+                    .attr('cx', (d) => (d.percentage * 5) + 710);
+
+                svg2
+                    .selectAll('.text-percentage')
+                    .text(d => d[zone][group].percentage + '%');
             });
         });
 
@@ -338,28 +393,6 @@ window.onload = function() {
                 let view = btn.dataset.view;
 
                 body.classList = view;
-            });
-        });
-
-        btnZones.forEach(btn => {
-            btn.addEventListener('click', () => {
-                document
-                    .querySelector('.btn-zone.active')
-                    .classList.remove('active');
-                    
-                btn.classList.add('active');
-
-                let group = btn.dataset.zone;
-
-                svg2
-                    .selectAll('g')
-                    .data(allData)
-                    .selectAll('ellipse')
-                    .data(datum => Object.values(datum[group]))
-                    .transition()
-                    .ease(d3.easeLinear)
-                    .duration(200)
-                    .attr('cx', (d) => (d.percentage * 5) + 710);
             });
         });
     });
