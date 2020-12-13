@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Data visualisation</title>
+    <title>Being LBGTI in France (2020)</title>
 </head>
 <body>
+    <h1>Being LGBTI in France (2020) | At work and at school</h1>
+
     <div class="buttons-top">
         <div>
-            Changer de cible :
-            <button class="btn-target-group all active" data-group="all">Tout</button>
-            <button class="btn-target-group lesbians" data-group="lesbians">Lesbiennes</button>
+            Change target group :
+            <button class="btn-target-group all active" data-group="all">All</button>
+            <button class="btn-target-group lesbians" data-group="lesbians">Lesbian</button>
             <button class="btn-target-group gay" data-group="gay">Gay</button>
             <button class="btn-target-group trans" data-group="trans">Trans</button>
-            <button class="btn-target-group intersex" data-group="intersex">Intersexes</button>
+            <button class="btn-target-group intersex" data-group="intersex">Intersex</button>
         </div>
         <div id="ctn-btn-zone">
-            Changer de zone :
+            Change zone :
             <button class="btn-zone active" data-zone="fr">France</button>
             <button class="btn-zone" data-zone="eu">Europe</button>
         </div>
@@ -25,18 +27,31 @@
 
     <div class="buttons-bottom">
         <div>
-            Changer de vue :
-            <button class="btn-view active" data-view="circles">Cercles</button>
-            <button class="btn-view" data-view="lines">Lignes</button>
+            Change view :
+            <button class="btn-view active" data-view="circles">Circles</button>
+            <button class="btn-view" data-view="lines">Lines</button>
+        </div>
+    </div>
+
+    <div class="legende">
+        <button class="open">?</button>
+        <div class="content">
+            <p>Caption :</p>
+            <svg width="120" height="100">
+                <ellipse cx="21" cy="25" rx="20" ry="20" fill="#FFD6E0"></ellipse>
+                <text x="55" y="30">France</text>
+                <ellipse cx="21" cy="75" rx="20" ry="20" stroke="#000" fill="#fff"></ellipse>
+                <text x="55" y="80">Europe</text>
+            </svg>
         </div>
     </div>
 
     <div id="container-1">
-        <!-- Affichage des donnees -->
+        <!-- Data -->
     </div>
 
     <div id="container-2">
-        <!-- Affichage des donnees -->
+        <!-- Data -->
     </div>
     
     <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>

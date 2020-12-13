@@ -22,8 +22,8 @@ window.onload = function() {
     const srcSupportSchool          = './data/support-school.csv';
 
     const canvas = {
-        width: window.innerWidth,
-        height: window.innerHeight - 10,
+        width: window.innerWidth > 1150 ? window.innerWidth : 1150,
+        height: 760,
     }
 
     const colors = {
@@ -280,11 +280,11 @@ window.onload = function() {
             .attr('x', canvas.width / 2)
             .attr('y', 690)
             .attr('fill', '#ffffff')
-            .attr('opacity', 0.4);
+            .attr('opacity', 0.6);
 
         function emptyText() {
             textPercentage.text('');
-            textQuestion.text('Hover a circle to show informations...');
+            textQuestion.text('Move your mouse over a circle to show informations...');
             textAnswer.text('');
         }
 
@@ -349,7 +349,7 @@ window.onload = function() {
             .attr('y', 4)
             .attr('text-anchor', 'start')
             .attr('fill', '#ffffff')
-            .attr('opacity', 0.4)
+            .attr('opacity', 0.6)
             .text(d => displayAnswer(d.fr.all.answer));
     
 
